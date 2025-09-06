@@ -38,7 +38,7 @@ const AboutSection = () => {
     <section id="about" className="py-20 relative">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+          <h2 className="section-title mb-6">
             حول ExoScan
           </h2>
           <div className="max-w-4xl mx-auto">
