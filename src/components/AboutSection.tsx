@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Telescope, Brain, TrendingUp, Globe } from "lucide-react";
 
@@ -6,29 +7,29 @@ const AboutSection = () => {
   const features = [
     {
       icon: <Telescope className="w-8 h-8" />,
-      title: "بيانات التلسكوبات",
-      description: "يدعم بيانات من تلسكوبات TESS وKepler والمراصد الفضائية الأخرى",
+      title: "Telescope Data",
+      description: "Supports data from TESS, Kepler telescopes and other space observatories",
       color: "text-blue-400",
       bgColor: "bg-blue-500/10"
     },
     {
       icon: <Brain className="w-8 h-8" />,
-      title: "ذكاء اصطناعي متقدم",
-      description: "خوارزميات تعلم آلي مدربة على آلاف منحنيات الضوء الحقيقية",
+      title: "Advanced AI",
+      description: "Machine learning algorithms trained on thousands of real light curves",
       color: "text-purple-400",
       bgColor: "bg-purple-500/10"
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
-      title: "دقة عالية",
-      description: "معدل دقة يتجاوز 95% في اكتشاف إشارات عبور الكواكب الخارجية",
+      title: "High Accuracy",
+      description: "Accuracy rate exceeding 95% in detecting exoplanet transit signals",
       color: "text-green-400",
       bgColor: "bg-green-500/10"
     },
     {
       icon: <Globe className="w-8 h-8" />,
-      title: "واجهة سهلة",
-      description: "تصميم بديهي يجعل علم الفلك في متناول الجميع",
+      title: "Easy Interface",
+      description: "Intuitive design that makes astronomy accessible to everyone",
       color: "text-yellow-400",
       bgColor: "bg-yellow-500/10"
     }
@@ -39,16 +40,16 @@ const AboutSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="section-title mb-6">
-            حول ExoScan
+            About ExoScan
           </h2>
           <div className="max-w-4xl mx-auto">
             <p className="text-xl text-muted-foreground mb-6 leading-relaxed">
-              ExoScan منصة رائدة تجمع بين قوة الذكاء الاصطناعي وعلم الفلك الحديث لاكتشاف الكواكب الخارجية. 
-              نحن نحول البيانات المعقدة إلى اكتشافات مثيرة!
+              ExoScan is a leading platform that combines the power of artificial intelligence with modern astronomy to discover exoplanets. 
+              We transform complex data into exciting discoveries!
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              باستخدام تقنيات التعلم العميق، نحلل منحنيات الضوء النجمية للبحث عن الانخفاضات الطفيفة 
-              التي تشير إلى عبور كوكب أمام نجمه المضيف - وهي الطريقة الأساسية لاكتشاف الكواكب الخارجية.
+              Using deep learning techniques, we analyze stellar light curves to search for subtle dips 
+              that indicate a planet transiting in front of its host star - the primary method for discovering exoplanets.
             </p>
           </div>
         </div>
@@ -76,7 +77,7 @@ const AboutSection = () => {
 
         {/* How it Works */}
         <div className="max-w-5xl mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12 text-accent">كيف يعمل ExoScan؟</h3>
+          <h3 className="text-3xl font-bold text-center mb-12 text-accent">How does ExoScan work?</h3>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center group">
@@ -86,9 +87,9 @@ const AboutSection = () => {
                 </div>
                 <div className="absolute top-1/2 left-full w-8 h-0.5 bg-gradient-to-r from-accent to-transparent hidden md:block transform -translate-y-1/2"></div>
               </div>
-              <h4 className="text-xl font-semibold mb-3 text-accent">رفع البيانات</h4>
+              <h4 className="text-xl font-semibold mb-3 text-accent">Upload Data</h4>
               <p className="text-muted-foreground">
-                ارفع ملف منحنى الضوء الخاص بالنجم المراد تحليله من بيانات TESS أو Kepler
+                Upload the light curve file of the star to be analyzed from TESS or Kepler data
               </p>
             </div>
 
@@ -99,9 +100,9 @@ const AboutSection = () => {
                 </div>
                 <div className="absolute top-1/2 left-full w-8 h-0.5 bg-gradient-to-r from-accent to-transparent hidden md:block transform -translate-y-1/2"></div>
               </div>
-              <h4 className="text-xl font-semibold mb-3 text-accent">تحليل ذكي</h4>
+              <h4 className="text-xl font-semibold mb-3 text-accent">Smart Analysis</h4>
               <p className="text-muted-foreground">
-                خوارزميات الذكاء الاصطناعي تحلل البيانات وتبحث عن أنماط عبور الكواكب
+                AI algorithms analyze the data and search for planet transit patterns
               </p>
             </div>
 
@@ -111,9 +112,9 @@ const AboutSection = () => {
                   <span className="text-2xl font-bold text-white">3</span>
                 </div>
               </div>
-              <h4 className="text-xl font-semibold mb-3 text-accent">النتائج</h4>
+              <h4 className="text-xl font-semibold mb-3 text-accent">Results</h4>
               <p className="text-muted-foreground">
-                احصل على تقرير مفصل يوضح احتمالية وجود كواكب خارجية مع الرسوم البيانية
+                Get a detailed report showing the probability of exoplanets with charts
               </p>
             </div>
           </div>
@@ -124,19 +125,19 @@ const AboutSection = () => {
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div className="group">
               <div className="text-4xl font-bold text-accent mb-2 group-hover:animate-pulse">+5000</div>
-              <p className="text-muted-foreground">منحنى ضوء محلل</p>
+              <p className="text-muted-foreground">Light curves analyzed</p>
             </div>
             <div className="group">
               <div className="text-4xl font-bold text-accent mb-2 group-hover:animate-pulse">95%</div>
-              <p className="text-muted-foreground">معدل الدقة</p>
+              <p className="text-muted-foreground">Accuracy rate</p>
             </div>
             <div className="group">
               <div className="text-4xl font-bold text-accent mb-2 group-hover:animate-pulse">+200</div>
-              <p className="text-muted-foreground">كوكب مكتشف</p>
+              <p className="text-muted-foreground">Planets discovered</p>
             </div>
             <div className="group">
               <div className="text-4xl font-bold text-accent mb-2 group-hover:animate-pulse">24/7</div>
-              <p className="text-muted-foreground">متاح دائماً</p>
+              <p className="text-muted-foreground">Always available</p>
             </div>
           </div>
         </div>
@@ -146,3 +147,4 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
+
