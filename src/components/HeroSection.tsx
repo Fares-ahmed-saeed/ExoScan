@@ -47,22 +47,22 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 text-center relative z-10 mb-25">
+      <div className="container mx-auto px-4 text-center relative z-10">
         <div className="max-w-4xl mx-auto animate-fade-in">
           {/* Main Title */}
           <div className="mb-8 animate-float">
-            <h1 className="hero-title mb-3 text-4xl md:text-6xl ">
-              اكتشف الكواكب الخارجية
+            <h1 className="hero-title mb-4 text-4xl md:text-6xl">
+              Discover Exoplanets
             </h1>
             <h2 className="hero-title text-3xl md:text-4xl">
-              بقوة الذكاء الاصطناعي
+              Powered by Artificial Intelligence
             </h2>
           </div>
 
           {/* Subtitle */}
           <p className="hero-subtitle mx-auto mb-12 leading-relaxed px-4">
-            ExoScan منصة متطورة تستخدم الذكاء الاصطناعي لتحليل بيانات التلسكوبات الفضائية 
-            واكتشاف الكواكب الخارجية من خلال تحليل منحنيات الضوء النجمية
+            ExoScan is an advanced platform that uses artificial intelligence to analyze space telescope data 
+            and discover exoplanets through stellar light curve analysis
           </p>
 
           {/* Action Buttons */}
@@ -73,7 +73,7 @@ const HeroSection = () => {
               onClick={scrollToAnalysis}
             >
               <Upload className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-              ابدأ التحليل الآن
+              Start Analysis Now
             </Button>
             
             <Button 
@@ -82,7 +82,7 @@ const HeroSection = () => {
               className="text-lg px-8 py-6 border-accent/30 hover:bg-accent/10 group"
             >
               <BarChart3 className="w-5 h-5 mr-2 group-hover:animate-pulse" />
-              عرض النتائج السابقة
+              View Previous Results
             </Button>
           </div>
 
@@ -92,9 +92,9 @@ const HeroSection = () => {
               <div className="w-16 h-16 bg-cosmic-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse">
                 <Upload className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-accent">رفع البيانات</h3>
+              <h3 className="text-xl font-semibold mb-3 text-accent">Data Upload</h3>
               <p className="text-muted-foreground">
-                ارفع ملفات منحنيات الضوء من تلسكوبات TESS وKepler بسهولة
+                Upload light curve files from TESS and Kepler telescopes with ease
               </p>
             </div>
 
@@ -102,9 +102,9 @@ const HeroSection = () => {
               <div className="w-16 h-16 bg-cosmic-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse">
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-accent">تحليل ذكي</h3>
+              <h3 className="text-xl font-semibold mb-3 text-accent">Smart Analysis</h3>
               <p className="text-muted-foreground">
-                خوارزميات متطورة تحلل البيانات وتكشف أنماط عبور الكواكب
+                Advanced algorithms analyze data and detect planet transit patterns
               </p>
             </div>
 
@@ -112,9 +112,9 @@ const HeroSection = () => {
               <div className="w-16 h-16 bg-cosmic-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse">
                 <BarChart3 className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-accent">نتائج مرئية</h3>
+              <h3 className="text-xl font-semibold mb-3 text-accent">Visual Results</h3>
               <p className="text-muted-foreground">
-                رسوم بيانية تفاعلية تظهر احتمالية وجود كواكب خارجية
+                Interactive charts showing the probability of exoplanet existence
               </p>
             </div>
           </div>
