@@ -39,26 +39,26 @@ const Header = () => {
               onClick={() => scrollToSection('home')}
               className="text-foreground hover:text-accent transition-colors"
             >
-              الرئيسية
+              Home
             </button>
             <button 
               onClick={() => scrollToSection('analysis')}
               className="text-foreground hover:text-accent transition-colors"
             >
-              التحليل
+              Analysis
             </button>
             <button 
               onClick={() => scrollToSection('about')}
               className="text-foreground hover:text-accent transition-colors"
             >
-              حول المشروع
+              About Project
             </button>
             <Button 
               variant="outline" 
               className="border-accent/30 hover:bg-accent/10"
               onClick={() => scrollToSection('analysis')}
             >
-              ابدأ التحليل
+              Start Analysis
             </Button>
           </nav>
 
