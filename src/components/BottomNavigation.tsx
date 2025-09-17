@@ -21,28 +21,28 @@ const BottomNavigation = () => {
           className="flex flex-col items-center space-y-2 p-3 min-w-[60px] bg-accent/20 rounded-xl text-accent transition-all duration-200"
         >
           <Home className="w-6 h-6" />
-          <span className="text-xs font-medium">الرئيسية</span>
+          <span className="text-xs font-medium">Home</span>
         </button>
         <button 
           onClick={() => scrollToSection('analysis')}
           className="flex flex-col items-center space-y-2 p-3 min-w-[60px] text-muted-foreground hover:text-accent transition-all duration-200"
         >
           <Search className="w-6 h-6" />
-          <span className="text-xs font-medium">التحليل</span>
+          <span className="text-xs font-medium">Analysis</span>
         </button>
         <button 
           onClick={() => scrollToSection('analysis')}
           className="flex flex-col items-center space-y-2 p-3 min-w-[60px] text-muted-foreground hover:text-accent transition-all duration-200"
         >
           <Play className="w-6 h-6" />
-          <span className="text-xs font-medium">ابدأ</span>
+          <span className="text-xs font-medium">Start</span>
         </button>
         <button 
           onClick={() => scrollToSection('about')}
           className="flex flex-col items-center space-y-2 p-3 min-w-[60px] text-muted-foreground hover:text-accent transition-all duration-200"
         >
           <Info className="w-6 h-6" />
-          <span className="text-xs font-medium">حول</span>
+          <span className="text-xs font-medium">About</span>
         </button>
       </div>
     </div>
