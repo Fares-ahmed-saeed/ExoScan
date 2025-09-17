@@ -52,10 +52,10 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="section-title mb-4">
-              لوحة التحكم والتحليل
+              Dashboard & Analysis
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              ستظهر نتائج التحليل والرسوم البيانية هنا بعد رفع البيانات
+              Analysis results and charts will appear here after uploading data
             </p>
           </div>
 
@@ -65,14 +65,14 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
               <CardHeader>
                 <CardTitle className="text-xl text-accent flex items-center gap-2">
                   <Activity className="w-5 h-5" />
-                  منحنى الضوء
+                  Light Curve
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="h-64 flex items-center justify-center border-2 border-dashed border-muted rounded-lg">
                   <div className="text-center">
                     <Activity className="w-12 h-12 text-muted-foreground mx-auto mb-4 opacity-50" />
-                    <p className="text-muted-foreground">سيظهر منحنى الضوء هنا بعد التحليل</p>
+                    <p className="text-muted-foreground">Light curve will appear here after analysis</p>
                   </div>
                 </div>
               </CardContent>
@@ -84,7 +84,7 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-muted-foreground">حالة الاكتشاف</p>
+                      <p className="text-sm text-muted-foreground">Detection Status</p>
                       <div className="h-6 bg-muted/30 rounded mt-2"></div>
                     </div>
                     <Target className="w-8 h-8 text-muted-foreground opacity-50" />
@@ -96,7 +96,7 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-muted-foreground">مستوى الثقة</p>
+                      <p className="text-sm text-muted-foreground">Confidence Level</p>
                       <div className="h-6 bg-muted/30 rounded mt-2"></div>
                     </div>
                     <TrendingDown className="w-8 h-8 text-muted-foreground opacity-50" />
@@ -108,7 +108,7 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-muted-foreground">عمق العبور</p>
+                      <p className="text-sm text-muted-foreground">Transit Depth</p>
                       <div className="h-6 bg-muted/30 rounded mt-2"></div>
                     </div>
                     <TrendingDown className="w-8 h-8 text-muted-foreground opacity-50" />
@@ -120,7 +120,7 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-muted-foreground">الدورة المدارية</p>
+                      <p className="text-sm text-muted-foreground">Orbital Period</p>
                       <div className="h-6 bg-muted/30 rounded mt-2"></div>
                     </div>
                     <Clock className="w-8 h-8 text-muted-foreground opacity-50" />
@@ -141,10 +141,10 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="section-title mb-4">
-              لوحة التحكم والتحليل
+              Dashboard & Analysis
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              جاري تحليل البيانات وإنشاء الرسوم البيانية...
+              Analyzing data and generating charts...
             </p>
           </div>
 
@@ -154,7 +154,7 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
               <CardHeader>
                 <CardTitle className="text-xl text-accent flex items-center gap-2">
                   <Activity className="w-5 h-5" />
-                  منحنى الضوء - {fileName}
+                  Light Curve - {fileName}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -184,10 +184,10 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="section-title mb-4">
-            لوحة التحكم والتحليل
+            Dashboard & Analysis
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            نتائج تحليل البيانات والرسوم البيانية التفصيلية
+            Data analysis results and detailed charts
           </p>
         </div>
 
@@ -198,10 +198,10 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
               <div className="flex items-center justify-between">
                 <CardTitle className="text-xl text-accent flex items-center gap-2">
                   <Activity className="w-5 h-5" />
-                  منحنى الضوء - {fileName}
+                  Light Curve - {fileName}
                 </CardTitle>
                 <Badge variant={result.planetDetected ? "default" : "secondary"} className="text-sm">
-                  {result.planetDetected ? "🪐 كوكب مكتشف" : "🌟 لا يوجد كوكب"}
+                  {result.planetDetected ? "🪐 Planet Detected" : "🌟 No Planet"}
                 </Badge>
               </div>
             </CardHeader>
@@ -213,11 +213,11 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
                     <XAxis 
                       dataKey="time" 
                       stroke="hsl(var(--muted-foreground))"
-                      label={{ value: 'الزمن (أيام)', position: 'insideBottom', offset: -10 }}
+                      label={{ value: 'Time (days)', position: 'insideBottom', offset: -10 }}
                     />
                     <YAxis 
                       stroke="hsl(var(--muted-foreground))"
-                      label={{ value: 'شدة الضوء', angle: -90, position: 'insideLeft' }}
+                      label={{ value: 'Light Intensity', angle: -90, position: 'insideLeft' }}
                     />
                     <Tooltip 
                       contentStyle={{
@@ -244,7 +244,7 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
               </div>
               {result.planetDetected && (
                 <p className="text-sm text-muted-foreground mt-4 text-center">
-                  الخطوط المتقطعة تشير إلى مواضع العبور المحتملة
+                  Dashed lines indicate potential transit positions
                 </p>
               )}
             </CardContent>
@@ -256,9 +256,9 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-muted-foreground">حالة الاكتشاف</p>
+                    <p className="text-sm text-muted-foreground">Detection Status</p>
                     <p className="text-2xl font-bold text-accent mt-1">
-                      {result.planetDetected ? "مؤكد" : "غير مؤكد"}
+                      {result.planetDetected ? "Confirmed" : "Not Confirmed"}
                     </p>
                   </div>
                   <Target className={`w-8 h-8 ${result.planetDetected ? 'text-green-400' : 'text-muted-foreground'}`} />
@@ -270,7 +270,7 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-muted-foreground">مستوى الثقة</p>
+                    <p className="text-sm text-muted-foreground">Confidence Level</p>
                     <p className="text-2xl font-bold text-accent mt-1">{result.confidence}%</p>
                   </div>
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold ${
@@ -287,7 +287,7 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-muted-foreground">عمق العبور</p>
+                    <p className="text-sm text-muted-foreground">Transit Depth</p>
                     <p className="text-2xl font-bold text-accent mt-1">{result.transitDepth}%</p>
                   </div>
                   <TrendingDown className="w-8 h-8 text-blue-400" />
@@ -299,8 +299,8 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-muted-foreground">الدورة المدارية</p>
-                    <p className="text-2xl font-bold text-accent mt-1">{result.period} يوم</p>
+                    <p className="text-sm text-muted-foreground">Orbital Period</p>
+                    <p className="text-2xl font-bold text-accent mt-1">{result.period} days</p>
                   </div>
                   <Clock className="w-8 h-8 text-purple-400" />
                 </div>
