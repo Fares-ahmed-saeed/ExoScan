@@ -58,8 +58,8 @@ const AnalysisSection = ({ onAnalysisComplete, onAnalysisStart, onAnalysisReset 
     onAnalysisStart();
     
     toast({
-      title: "تم رفع الملف",
-      description: `جاري تحليل ${file.name}...`,
+      title: "File uploaded",
+      description: `Analyzing ${file.name}...`,
     });
 
     // Simulate file processing
@@ -80,8 +80,8 @@ const AnalysisSection = ({ onAnalysisComplete, onAnalysisStart, onAnalysisReset 
       onAnalysisComplete(mockResult, file.name);
       
       toast({
-        title: mockResult.planetDetected ? "🪐 تم اكتشاف كوكب محتمل!" : "🌟 لا يوجد كوكب مكتشف",
-        description: `مستوى الثقة: ${mockResult.confidence}%`,
+        title: mockResult.planetDetected ? "🪐 Planet candidate detected!" : "🌟 No planet detected",
+        description: `Confidence level: ${mockResult.confidence}%`,
       });
     }, 4000);
   };
@@ -109,15 +109,15 @@ const AnalysisSection = ({ onAnalysisComplete, onAnalysisStart, onAnalysisReset 
   const getStatusText = () => {
     switch (status) {
       case 'uploading':
-        return 'جاري رفع الملف...';
+        return 'Uploading file...';
       case 'processing':
-        return 'جاري تحليل البيانات...';
+        return 'Analyzing data...';
       case 'complete':
-        return 'تم التحليل بنجاح';
+        return 'Analysis completed successfully';
       case 'error':
-        return 'حدث خطأ في التحليل';
+        return 'Analysis error occurred';
       default:
-        return 'ارفع ملف منحنى الضوء';
+        return 'Upload light curve file';
     }
   };
 
@@ -126,17 +126,17 @@ const AnalysisSection = ({ onAnalysisComplete, onAnalysisStart, onAnalysisReset 
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="section-title mb-4">
-            تحليل منحنيات الضوء
+            Light Curve Analysis
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            ارفع بيانات التلسكوب واتركنا نكتشف الكواكب الخارجية لك
+            Upload telescope data and let us discover exoplanets for you
           </p>
         </div>
 
         <div className="max-w-2xl mx-auto">
           <Card className="card-cosmic">
             <CardHeader>
-              <CardTitle className="text-2xl text-center text-accent">رفع البيانات</CardTitle>
+              <CardTitle className="text-2xl text-center text-accent">Upload Data</CardTitle>
             </CardHeader>
             <CardContent>
               <div
@@ -165,10 +165,10 @@ const AnalysisSection = ({ onAnalysisComplete, onAnalysisStart, onAnalysisReset 
                 {status === 'idle' && (
                   <div>
                     <p className="text-muted-foreground mb-4">
-                      اضغط هنا أو اسحب الملف لرفعه
+                      Click here or drag file to upload
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      الصيغ المدعومة: CSV, TXT, DAT
+                      Supported formats: CSV, TXT, DAT
                     </p>
                   </div>
                 )}
@@ -186,7 +186,7 @@ const AnalysisSection = ({ onAnalysisComplete, onAnalysisStart, onAnalysisReset 
                       <div className="bg-cosmic-gradient h-2 rounded-full animate-pulse" style={{ width: '70%' }}></div>
                     </div>
                     <p className="text-sm text-muted-foreground mt-2">
-                      جاري معالجة البيانات بالذكاء الاصطناعي...
+                      Processing data with artificial intelligence...
                     </p>
                   </div>
                 )}
@@ -197,7 +197,7 @@ const AnalysisSection = ({ onAnalysisComplete, onAnalysisStart, onAnalysisReset 
                       className="btn-stellar"
                       onClick={handleReset}
                     >
-                      تحليل ملف جديد
+                      Analyze New File
                     </Button>
                   </div>
                 )}
@@ -211,3 +211,4 @@ const AnalysisSection = ({ onAnalysisComplete, onAnalysisStart, onAnalysisReset 
 };
 
 export default AnalysisSection;
+
