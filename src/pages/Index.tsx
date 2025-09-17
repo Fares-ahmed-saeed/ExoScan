@@ -77,7 +77,7 @@ const Index = () => {
               <span className="text-xl font-bold text-accent">ExoScan</span>
             </div>
             <p className="text-muted-foreground text-sm">
-              منصة اكتشاف الكواكب الخارجية بالذكاء الاصطناعي
+             AI-Powered Exoplanet Discovery Platform
             </p>
           </div>
         </div>
