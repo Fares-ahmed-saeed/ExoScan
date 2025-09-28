@@ -54,7 +54,7 @@ const HeroSection = () => {
             <h1 className="hero-title mb-4 text-4xl md:text-6xl">
               Discover Exoplanets
             </h1>
-            <h2 className="hero-title text-3xl md:text-4xl">
+            <h2 className="hero-title text-3xl md:text-3xl">
               Powered by Artificial Intelligence
             </h2>
           </div>
