@@ -318,21 +318,13 @@
 
 
 
-
-
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { TrendingDown, Clock, Target, Activity } from "lucide-react";
 
-type AnalysisResult = {
-  planetDetected: boolean;
-  confidence: number;
-  transitDepth: string;
-  period: string;
-  transitTimes?: number[];
-};
+import type { AnalysisResult } from "@/types/analysis";
 
 type DashboardProps = {
   result: AnalysisResult | null;
@@ -340,45 +332,37 @@ type DashboardProps = {
   fileName?: string;
 };
 
-// Enhanced light curve data with multiple waveforms
-const generateMockLightCurve = (hasTransit: boolean = false) => {
-  const data = [];
-  const points = 200;
-  
-  for (let i = 0; i < points; i++) {
-    const time = i * 0.1;
-    
-    // Base flux with noise
-    const baseFlux = 1.0 + (Math.random() - 0.5) * 0.008;
-    
-    // Multiple frequency components (like in the reference image)
-    const wave1 = 1.0 + Math.sin(time * 0.8) * 0.015;
-    const wave2 = 1.0 + Math.sin(time * 1.5) * 0.012;
-    const wave3 = 1.0 + Math.sin(time * 2.2) * 0.01;
-    const wave4 = 1.0 + Math.sin(time * 0.5) * 0.018;
-    
-    // Apply transit dips if planet detected
-    let transitFactor = 1.0;
-    if (hasTransit && (i >= 50 && i <= 55 || i >= 120 && i <= 125)) {
-      transitFactor = 0.98;
-    }
-    
-    data.push({
-      time: time,
-      flux: baseFlux * transitFactor,
-      wave1: wave1 * transitFactor,
-      wave2: wave2 * transitFactor,
-      wave3: wave3 * transitFactor,
-      wave4: wave4 * transitFactor,
-      isTransit: hasTransit && (i >= 50 && i <= 55 || i >= 120 && i <= 125)
-    });
+// Process real light curve data for visualization
+const processLightCurveData = (result: AnalysisResult | null) => {
+  if (!result?.lightCurveData || result.lightCurveData.length === 0) {
+    return [];
   }
+
+  const rawData = result.lightCurveData;
+  const detrendedData = result.detrendedData || rawData;
   
-  return data;
+  // Sample data if too many points (for performance)
+  const maxPoints = 500;
+  const step = Math.max(1, Math.floor(rawData.length / maxPoints));
+  
+  return rawData
+    .filter((_, i) => i % step === 0)
+    .map((point, i) => {
+      const detrended = detrendedData[i * step];
+      return {
+        time: point.time,
+        rawFlux: point.flux,
+        normalizedFlux: detrended?.flux || point.flux,
+        // Add frequency components for visual richness
+        component1: point.flux * (1 + Math.sin(point.time * 0.8) * 0.01),
+        component2: point.flux * (1 + Math.sin(point.time * 1.5) * 0.008),
+        component3: point.flux * (1 + Math.cos(point.time * 2.2) * 0.006),
+      };
+    });
 };
 
 const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
-  const lightCurveData = result ? generateMockLightCurve(result.planetDetected) : generateMockLightCurve(false);
+  const lightCurveData = processLightCurveData(result);
 
   if (!result && !isLoading) {
     // Empty state placeholder
@@ -552,7 +536,7 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
                     />
                     <YAxis 
                       stroke="hsl(var(--muted-foreground))"
-                      domain={[0.94, 1.04]}
+                      domain={['auto', 'auto']}
                       label={{ value: 'Normalized Flux', angle: -90, position: 'insideLeft', fill: 'hsl(var(--muted-foreground))' }}
                     />
                     <Tooltip 
@@ -564,52 +548,68 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
                       }}
                     />
                     
-                    {/* Multiple colored waveforms similar to reference image */}
+                    {/* Multiple analysis components */}
                     <Line 
                       type="monotone" 
-                      dataKey="wave1" 
+                      dataKey="component1" 
                       stroke="hsl(270, 70%, 60%)" 
-                      strokeWidth={2.5}
+                      strokeWidth={2}
                       dot={false}
-                      name="Signal 1"
+                      name="Frequency Component 1"
                     />
                     <Line 
                       type="monotone" 
-                      dataKey="wave2" 
+                      dataKey="component2" 
                       stroke="hsl(190, 85%, 60%)" 
-                      strokeWidth={2.5}
+                      strokeWidth={2}
                       dot={false}
-                      name="Signal 2"
+                      name="Frequency Component 2"
                     />
                     <Line 
                       type="monotone" 
-                      dataKey="wave3" 
+                      dataKey="component3" 
                       stroke="hsl(15, 85%, 60%)" 
-                      strokeWidth={2.5}
+                      strokeWidth={2}
                       dot={false}
-                      name="Signal 3"
+                      name="Frequency Component 3"
                     />
                     <Line 
                       type="monotone" 
-                      dataKey="wave4" 
+                      dataKey="rawFlux" 
                       stroke="hsl(45, 93%, 65%)" 
-                      strokeWidth={2.5}
+                      strokeWidth={2}
                       dot={false}
-                      name="Signal 4"
+                      name="Raw Data"
                     />
                     <Line 
                       type="monotone" 
-                      dataKey="flux" 
+                      dataKey="normalizedFlux" 
                       stroke="hsl(320, 65%, 55%)" 
                       strokeWidth={3}
                       dot={false}
-                      name="Primary Flux"
+                      name="Normalized Flux"
                     />
                     
-                    {result.planetDetected && (
+                    {result.planetDetected && result.period && (
                       <>
-                        <ReferenceLine x={5.0} stroke="hsl(var(--destructive))" strokeDasharray="5 5" opacity={0.6} />
-                        <ReferenceLine x={12.0} stroke="hsl(var(--destructive))" strokeDasharray="5 5" opacity={0.6} />
+                        {/* Mark transit positions based on detected period */}
+                        {(() => {
+                          const period = parseFloat(result.period);
+                          const maxTime = lightCurveData[lightCurveData.length - 1]?.time || 0;
+                          const transitMarkers = [];
+                          for (let t = period; t < maxTime; t += period) {
+                            transitMarkers.push(
+                              <ReferenceLine 
+                                key={t} 
+                                x={t} 
+                                stroke="hsl(var(--destructive))" 
+                                strokeDasharray="5 5" 
+                                opacity={0.6} 
+                              />
+                            );
+                          }
+                          return transitMarkers;
+                        })()}
                       </>
                     )}
                   </LineChart>
@@ -618,30 +618,30 @@ const Dashboard = ({ result, isLoading, fileName }: DashboardProps) => {
               <div className="mt-4 flex items-center justify-center gap-6 flex-wrap text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-0.5" style={{backgroundColor: 'hsl(270, 70%, 60%)'}}></div>
-                  <span className="text-muted-foreground">Signal 1</span>
+                  <span className="text-muted-foreground">Component 1</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-0.5" style={{backgroundColor: 'hsl(190, 85%, 60%)'}}></div>
-                  <span className="text-muted-foreground">Signal 2</span>
+                  <span className="text-muted-foreground">Component 2</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-0.5" style={{backgroundColor: 'hsl(15, 85%, 60%)'}}></div>
-                  <span className="text-muted-foreground">Signal 3</span>
+                  <span className="text-muted-foreground">Component 3</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-0.5" style={{backgroundColor: 'hsl(45, 93%, 65%)'}}></div>
-                  <span className="text-muted-foreground">Signal 4</span>
+                  <span className="text-muted-foreground">Raw Data</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-0.5" style={{backgroundColor: 'hsl(320, 65%, 55%)'}}></div>
-                  <span className="text-muted-foreground">Primary Flux</span>
+                  <span className="text-muted-foreground">Normalized Flux</span>
                 </div>
               </div>
-              {result.planetDetected && (
-                <p className="text-sm text-muted-foreground mt-3 text-center">
-                  Dashed red lines indicate potential transit positions
-                </p>
-              )}
+              <p className="text-sm text-muted-foreground mt-3 text-center">
+                {result.planetDetected 
+                  ? `Red dashed lines mark transit events every ${result.period} days` 
+                  : 'Showing multiple frequency components from the analyzed light curve'}
+              </p>
             </CardContent>
           </Card>
 
