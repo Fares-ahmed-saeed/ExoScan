@@ -128,7 +128,7 @@ const AboutSection = () => {
               <p className="text-muted-foreground">Light curves analyzed</p>
             </div>
             <div className="group">
-              <div className="text-4xl font-bold text-accent mb-2 group-hover:animate-pulse">95%</div>
+              <div className="text-4xl font-bold text-accent mb-2 group-hover:animate-pulse">96%</div>
               <p className="text-muted-foreground">Accuracy rate</p>
             </div>
             <div className="group">
